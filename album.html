@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Album Kenangan</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- CEK LOGIN -->
+<script>
+if (localStorage.getItem("isLogin") !== "true") {
+    window.location.href = "login.html";
+}
+</script>
+
+<header>
+    <h1>Album Kenangan</h1>
+    <p>Kumpulan foto berharga</p>
+</header>
+
+<section class="container">
+
+    <div class="diary-card">
+        <h2>Tambah Foto</h2>
+
+        <input type="file" id="photoInput" accept="image/*">
+        <button onclick="savePhoto()">Simpan Foto</button>
+    </div>
+
+    <div class="diary-card">
+        <h2>Foto Tersimpan</h2>
+        <div class="photo-album" id="photoAlbum"></div>
+    </div>
+
+</section>
+
+<footer>
+    <p>Album Kenangan © 2025</p>
+</footer>
+
+<script>
+function savePhoto() {
+    const input = document.getElementById("photoInput");
+    if (!input.files[0]) {
+        alert("Pilih foto dulu!");
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function () {
+        const photos = JSON.parse(localStorage.getItem("photos")) || [];
+        photos.push(reader.result);
+        localStorage.setItem("photos", JSON.stringify(photos));
+        showPhotos();
+    };
+    reader.readAsDataURL(input.files[0]);
+}
+
+function showPhotos() {
+    const photos = JSON.parse(localStorage.getItem("photos")) || [];
+    const album = document.getElementById("photoAlbum");
+    album.innerHTML = "";
+
+    photos.forEach((p) => {
+        album.innerHTML += `
+            <div class="photo-frame">
+                <img src="${p}">
+            </div>
+        `;
+    });
+}
+
+showPhotos();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    background: #f2e8cf;
+    color: #4a3f35;
+    font-family: 'Indie Flower', cursive;
+}
+
+/* HEADER */
+header {
+    background: #e4d4b7;
+    text-align: center;
+    padding: 25px;
+    border-bottom: 5px solid #c2b092;
+}
+
+header h1 {
+    font-size: 5rem;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+/* CARD */
+.diary-card {
+    background: #fff7e1;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    border: 1px solid #d6c7a1;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.diary-card h2 {
+    margin-bottom: 10px;
+}
+
+/* DATE */
+.date {
+    margin-bottom: 10px;
+    color: #6b5e52;
+}
+
+/* TEXTAREA */
+textarea {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #b6a47c;
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.7rem;
+}
+
+/* BUTTON */
+button {
+    margin-top: 10px;
+    padding: 8px 30px;
+    background: #a67c52;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #8c643f;
+}
+
+/* OLD NOTES */
+.old-note {
+    margin-bottom: 15px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #5e5034;
+}
+
+/* =========================
+   BACKGROUND HUJAN ELEGAN
+   ========================= */
+
+.login-page {
+    min-height: 100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url("https://images.unsplash.com/photo-1501999635878-71cb5379c2d8?auto=format&fit=crop&w=1600&q=80")
+        center / cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* WRAPPER */
+.login-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* BOX LOGIN */
+.login-box {
+    background: rgba(255, 247, 225, 0.85);
+    backdrop-filter: blur(10px);   /* 🔥 BLUR ELEGAN */
+    -webkit-backdrop-filter: blur(10px);
+    padding: 45px 55px;
+    width: 460px;                  /* 🔥 LEBIH BESAR */
+    border-radius: 14px;
+    box-shadow: 0 20px 45px rgba(0,0,0,0.45);
+    text-align: center;
+}
+
+/* JUDUL */
+.login-box h2 {
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+    color: #3f2f22;
+}
+
+.login-box p {
+    margin-bottom: 22px;
+    color: #6b5e52;
+}
+
+/* INPUT */
+.login-box input {
+    width: 100%;
+    padding: 16px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: 1px solid #b6a47c;
+    margin-bottom: 18px;
+    font-family: 'Indie Flower', cursive;
+}
+
+/* BUTTON */
+.login-box button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+    background: #a67c52;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-box button:hover {
+    background: #8c643f;
+}
+
+
+/* =====================
+   ALBUM FOTO
+   ===================== */
+
+.photo-album {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.photo-frame {
+    background: #fff;
+    padding: 6px;
+    border-radius: 6px;
+    border: 2px solid #cbb38a;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 4px;
+}

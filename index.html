@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Catatan Harian</title>
+
+    <!-- Font tulisan tangan -->
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+<!-- LOGINNNN AND LOGOUT -->
+    <button onclick="logout()" style="float:right; margin:10px;">
+    Logout
+</button>
+
+<script>
+function logout() {
+    localStorage.removeItem("isLogin");
+    window.location.href = "login.html";
+}
+</script>
+
+<!-- LINKKKKK -->
+
+<a href="album.html">
+    <button style="margin:20px;">📸 Buka Album</button>
+</a>
+
+
+</head>
+<body>
+
+    <script>
+if (localStorage.getItem("isLogin") !== "true") {
+    window.location.href = "login.html";
+}
+</script>
+
+
+<header>
+    <h1>Catatan Harian</h1>
+    <p>Mencatat Kisah Setiap Hari</p>
+</header>
+
+<section class="container">
+
+    <div class="diary-card">
+        <h2>Catatan Hari Ini</h2>
+        <p class="date" id="todayDate"></p>
+
+        <textarea id="noteInput" placeholder="Tulis catatan harianmu..."></textarea>
+        <button onclick="saveNote()">Simpan Catatan</button>
+    </div>
+
+    <div class="diary-card">
+        <h2>Catatan Sebelumnya</h2>
+        <div id="savedNotes"></div>
+    </div>
+
+</section>
+
+<footer>
+    <p>Catatan Harian © 2025</p>
+</footer>
+
+<script>
+const date = new Date();
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+document.getElementById("todayDate").innerText =
+    date.toLocaleDateString("id-ID", options);
+
+function saveNote() {
+    const text = document.getElementById("noteInput").value;
+    if (text.trim() === "") {
+        alert("Catatan masih kosong!");
+        return;
+    }
+
+    const notes = JSON.parse(localStorage.getItem("notes")) || [];
+    notes.push({
+        isi: text,
+        tanggal: date.toLocaleDateString("id-ID", options)
+    });
+
+    localStorage.setItem("notes", JSON.stringify(notes));
+    document.getElementById("noteInput").value = "";
+    showNotes();
+}
+
+function showNotes() {
+    const notes = JSON.parse(localStorage.getItem("notes")) || [];
+    const container = document.getElementById("savedNotes");
+    container.innerHTML = "";
+
+    notes.forEach(n => {
+        container.innerHTML += `
+            <div class="old-note">
+                <h4>${n.tanggal}</h4>
+                <p>${n.isi}</p>
+                <hr>
+            </div>
+        `;
+    });
+}
+
+showNotes();
+
+
+
+</script>
+
+</body>
+</html>
